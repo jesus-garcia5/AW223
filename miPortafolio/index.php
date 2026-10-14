@@ -78,14 +78,14 @@
         <!--Seccion de contacto -->
         <section id="contacto">
             <h2>Contactame</h2>
-            <form onsubmit="validarFormulario(event)">
+            <form id="formulario" action="guardar_mensaje.php" method="post">
                 <div class="campo">
                     <label for="nombre">
                         Nombre
                     </label>
                     <input type="text"
                        id="nombre"
-                       name="nombre"
+                       name="txtnombre"
                        placeholder="escribe tu nombre"
                     >
                 </div>
@@ -97,7 +97,7 @@
                     <input 
                       type="email"
                       id="email"
-                      name="email"
+                      name="txtemail"
                       placeholder="ejemplo@correo.com"
                     >
                 </div>
@@ -109,7 +109,7 @@
 
                     <texterea
                       id="mensaje"
-                      name="mensaje"
+                      name="txtmensaje"
                       rows="5"
                       placeholder="Escribe tu mensaje"> 
                     </texterea>
