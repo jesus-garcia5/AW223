@@ -14,7 +14,7 @@ body{
     background-color: gray;
 }
 textarea{
-      background-color: blue;
+      background-color: rgb(203, 203, 245);
 
 }
 
@@ -22,7 +22,7 @@ textarea{
 header{
     text-align: center;
     padding: 50px 20px;
-    background-color: black;
+    background-color: rgb(12, 10, 10);
     color: ghostwhite;
 }
 header h1{ /*h1 que solo afecta a header*/
@@ -42,11 +42,11 @@ nav{
     justify-content: center;
     gap: 25px;
     padding: 20px;
-    background-color: rgb(203, 18, 18);
+    background-color: rgb(192, 211, 225);
     border-bottom: 1px solid #ddd;
 }
 nav a{
-    color: paleturquoise;
+    color: rgb(4, 4, 4);
     text-decoration: none;
     font-weight: bold;
 }
@@ -58,13 +58,13 @@ nav a:hover{
 main{
     max-width: 900px;
     margin:0 auto;
-    background-color: lightgoldenrodyellow;
+    background-color: rgb(168, 168, 164);
 }
 
 /* Secciones*/
 section{
     padding: 60px 40px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ecbcbc;
 }
 section h2{
     margin-top: 0;
@@ -110,7 +110,7 @@ section h2{
 }
 .boton:hover,button:hover{
     background-color: greenyellow;
-    color:black
+    color:black;
 }
 
 /* Seccion sobre mi*/
@@ -147,8 +147,8 @@ section h2{
 
 .lista-habilidades li{
     padding: 12px 20px;
-    background-color: cadetblue;
-    border: 4px solid gold;
+    background-color: rgb(190, 232, 234);
+    border: 4px solid rgb(22, 22, 21);
     border-radius: 5px;
     font-weight: bold;
 }
@@ -166,9 +166,9 @@ section h2{
     flex: 1;
     min-width: 250px;
     padding: 25px;
-    border: 3px solid darkred;
+    border: 3px solid rgb(15, 15, 15);
     border-radius: 8px;
-    background-color: lightblue;
+    background-color: rgb(202, 224, 232);
 
 }
 
@@ -178,7 +178,7 @@ section h2{
 }
 
 .proyecto a{
-    color: blueviolet;
+    color: rgb(93, 58, 149);
     font-weight: bold;
 }
 

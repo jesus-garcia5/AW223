@@ -12,8 +12,8 @@
     </header>
 
     <nav>
-        <a href="index.html">regresar al portafolio</a>
-        <a href="admin.php">regresar a administración</a>
+        <a href="index.php">🏠</a>
+        <a href="admin.php">regresar a admin</a>
     </nav>
 
     <main>

@@ -13,9 +13,9 @@ $stmt = $conexion->prepare($sqlInsert);
 $stmt->bind_param("sss", $nombre, $correo, $mensaje);
 
 if ($stmt->execute()) {
-    header("<Location:../index.php?estadophp=exito")
+    header("Location: index.php?estadophp=exito");
 } else {
-    header("Location:../index.php?estadophp=error")
+    header("Location: index.php?estadophp=error");
    
 }
 
