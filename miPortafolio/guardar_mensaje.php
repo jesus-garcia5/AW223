@@ -1,20 +1,23 @@
 <?php
 
-    require_once("conexion.php");
+require_once("conexion.php");
 
-$nombre= $_post["txtnombre"];
-$correo= $_post["txtemail"];
-$mensaje= $_post["txtmensaje"];
+$nombre = $_POST["txtnombre"];
+$correo = $_POST["txtemail"];
+$mensaje = $_POST["txtmensaje"];
 
-$splInsert="INSERT INTO mensajes(nombre, correo, mensaje) VALUES(?,?,?)";
+$sqlInsert = "INSERT INTO mensajes(nombre, correo, mensaje) VALUES(?,?,?)";
 
+$stmt = $conexion->prepare($sqlInsert);
 
-$stmt=$conexion->prepare($splInsert);
+$stmt->bind_param("sss", $nombre, $correo, $mensaje);
 
-$stmt->bind_peram("sss", $nombre, $correo, $mensaje);
-
-if($stmt->execute()){
-    echo "Conexion exitosa"
-}else{
-    echo "Error"
+if ($stmt->execute()) {
+    header("<Location:../index.php?estadophp=exito")
+} else {
+    header("Location:../index.php?estadophp=error")
+   
 }
+
+
+?>

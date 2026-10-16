@@ -107,12 +107,12 @@
                         Mensaje
                     </label>
 
-                    <texterea
+                    <textarea
                       id="mensaje"
                       name="txtmensaje"
                       rows="5"
-                      placeholder="Escribe tu mensaje"> 
-                    </texterea>
+                      placeholder="Escribe tu mensaje"
+                    > </textarea>
                 </div>
 
                 <button type="submit">
@@ -133,6 +133,6 @@
     
 
 
-<script src="./JS/funcion.js"></script>
+<script src="JS/AlertInsert.js"></script>
 </body>
 </html>

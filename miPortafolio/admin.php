@@ -18,34 +18,39 @@
     <main>
         <section>
             <table border="1">
-                <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>correo</th>
-                    <th>mensaje</th>
-                    <th>acciones</th>
-                </tr>
+                <thead>
+                    <tr>
+                       <th>nombre</th>
+                       <th>correo</th>
+                       <th>mensaje</th>
+                       <th>fecha</th>
+                       <th>opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        require 'consulta_mensajes.php'
+                        $rsMensajes=consultaMensajes();
 
-                <tr>
-                    <td>1</td>
-                    <td>juan pérez</td>
-                    <td>juan@gmail.com</td>
-                    <td>¡hola! me gustó mucho tu portafolio, quiero contactarte.</td>
-                    <td>
-                        <a href="editar.php">editar</a>
-                        <a href="#">borrar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>maría gómez</td>
-                    <td>maria@gmail.com</td>
-                    <td>hola jesus, ¿tienes disponibilidad para un proyecto?</td>
-                    <td>
-                        <a href="editar.php">editar</a>
-                        <a href="#">borrar</a>
-                    </td>
-                </tr>
+                        while($arrMensaje= mysqli_fetch_array($rsMnesajes)){
+
+
+                         echo<tr>
+                            <td>.$arrMensaje['nombre']."</td>
+                            <td>.$arrMensaje['correo']."</td>
+                            <td>.$arrMensaje['mensaje']."</td>
+                            <td>.$arrMensaje['timeStamps']."</td>
+                            <td>
+                            <a href='editar.php'>editar</a>
+                            <a href='#'>borrar</a>
+                         </td>
+                         </tr>";
+                        }
+                    ?>
+
+                </tbody>
+
+               
             </table>
         </section>
     </main>
