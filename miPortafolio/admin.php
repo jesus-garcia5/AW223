@@ -1,3 +1,23 @@
+<?php
+require_once "conexion.php";
+
+if (isset($_GET["borrar"])) {
+
+    $id = (int) $_GET["borrar"];
+
+    $sql = "delete from mensajes where id = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        header("location: admin.php?eliminado=exito");
+        exit;
+    } else {
+        header("location: admin.php?eliminado=error");
+        exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,8 +62,9 @@
                             <td><?php echo htmlspecialchars($arrMensaje['mensaje']); ?></td>
                             <td><?php echo htmlspecialchars($arrMensaje['timeStaps'] ?? ''); ?></td>
                             <td>
-                                <a href="editar.php">✏️</a>
-                                <a href="#">🚮</a>
+                                <a href="editar.php?id=<?php echo $arrMensaje['id']; ?>">✏️</a>
+                                <a href="admin.php?borrar=<?php echo $arrMensaje['id']; ?>"
+                                   onclick="return confirm('¿seguro que quieres eliminar este mensaje?')">🚮</a>
                             </td>
                         </tr>
                     <?php
@@ -57,6 +78,25 @@
     <footer>
         <p>2026 mi portafolio web</p>
     </footer>
+    <script>
+    const parametros = new URLSearchParams(window.location.search);
+
+    if (parametros.get("eliminado") === "exito") {
+        alert("el mensaje se eliminó correctamente");
+    }
+
+    if (parametros.get("eliminado") === "error") {
+        alert("no se pudo eliminar el mensaje");
+    }
+
+    if (parametros.has("eliminado")) {
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+    }
+</script>
 
 </body>
 </html>

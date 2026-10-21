@@ -87,6 +87,7 @@
                        id="nombre"
                        name="txtnombre"
                        placeholder="escribe tu nombre"
+                       required
                     >
                 </div>
 
@@ -99,6 +100,7 @@
                       id="email"
                       name="txtemail"
                       placeholder="ejemplo@correo.com"
+                      required
                     >
                 </div>
 
@@ -112,6 +114,7 @@
                       name="txtmensaje"
                       rows="5"
                       placeholder="Escribe tu mensaje"
+                      required
                     > </textarea>
                 </div>
 
@@ -134,5 +137,19 @@
 
 
 <script src="JS/AlertInsert.js"></script>
+<script>
+    const parametros = new URLSearchParams(window.location.search);
+
+    if (parametros.get("actualizado") === "exito") {
+        alert("el registro se actualizó correctamente");
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+    }
+</script>
+
 </body>
 </html>

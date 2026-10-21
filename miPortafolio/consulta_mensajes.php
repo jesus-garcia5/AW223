@@ -3,14 +3,17 @@
 function consultaMensajes() {
     require_once "conexion.php";
 
+    global $conexion;
+
     $selectMsj = "SELECT * FROM mensajes";
 
-    try {
-        $rsMsj = mysqli_query($conexion, $selectMsj);
-        return $rsMsj;
-    } catch (mysqli_sql_exception $e) {
-        die("Algo paso al consultar: " . $e->getMessage());
+    $rsMsj = mysqli_query($conexion, $selectMsj);
+
+    if (!$rsMsj) {
+        die("error al consultar los mensajes: " . mysqli_error($conexion));
     }
+
+    return $rsMsj;
 }
 
 ?>

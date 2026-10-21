@@ -1,3 +1,54 @@
+<?php
+require_once "conexion.php";
+
+if (!isset($_GET["id"])) {
+    header("location: admin.php");
+    exit;
+}
+
+$id = (int) $_GET["id"];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nombre = trim($_POST["nombre"]);
+    $correo = trim($_POST["correo"]);
+    $mensaje = trim($_POST["mensaje"]);
+
+    if ($nombre == "" || $correo == "" || $mensaje == "") {
+        $error = "todos los campos son obligatorios";
+    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        $error = "escribe un correo válido";
+    } else {
+        $sql = "update mensajes
+                set nombre = ?, correo = ?, mensaje = ?
+                where id = ?";
+
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param("sssi", $nombre, $correo, $mensaje, $id);
+
+        if ($stmt->execute()) {
+            header("location: index.php?actualizado=exito");
+            exit;
+        } else {
+            $error = "no se pudo actualizar el mensaje";
+        }
+    }
+}
+
+$sql = "select * from mensajes where id = ?";
+$stmt = $conexion->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$arrMensaje = $resultado->fetch_assoc();
+
+if (!$arrMensaje) {
+    header("location: admin.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,23 +69,40 @@
 
     <main>
         <section>
+
+            <?php if (isset($error)) { ?>
+                <p style="color: red;">
+                    <?php echo htmlspecialchars($error); ?>
+                </p>
+            <?php } ?>
+
             <form method="post">
+
                 <div class="campo">
                     <label>nombre:</label>
-                    <input type="text" name="nombre" value="juan pérez" required>
+                    <input type="text" name="nombre"
+                        value="<?php echo htmlspecialchars($arrMensaje['nombre']); ?>"
+                        required>
                 </div>
 
                 <div class="campo">
                     <label>correo:</label>
-                    <input type="email" name="correo" value="juan@gmail.com" required>
+                    <input type="email" name="correo"
+                        value="<?php echo htmlspecialchars($arrMensaje['correo']); ?>"
+                        required>
                 </div>
 
                 <div class="campo">
                     <label>mensaje:</label>
-                    <textarea name="mensaje" required>¡hola! me gustó mucho tu portafolio, quiero contactarte.</textarea>
+                    <textarea name="mensaje" required><?php
+                        echo htmlspecialchars($arrMensaje['mensaje']);
+                    ?></textarea>
                 </div>
 
-                <button type="submit" name="guardar">guardar cambios</button>
+                <button type="submit" name="guardar">
+                    actualizar
+                </button>
+
             </form>
         </section>
     </main>
