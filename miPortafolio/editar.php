@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 where id = ?";
 
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("sssi", $nombre, $correo, $mensaje, $id);
+        $stmt->bind_param("sssi", $nombre, $correo, $mensaje, $id); 
 
         if ($stmt->execute()) {
             header("location: index.php?actualizado=exito");
