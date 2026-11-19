@@ -1,0 +1,48 @@
+.app {
+  padding: 30px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.destinos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.destino-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  text-align: left;
+  color: #333;
+}
+
+.destino-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.destino-info {
+  padding: 18px;
+}
+
+.destino-info h2 {
+  color: #1677a5;
+}
+
+.destino-info button {
+  background: #1677a5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.destino-info button:hover {
+  background: #105575;
+}
