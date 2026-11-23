@@ -57,7 +57,6 @@ const destinos = [
 function App() {
   const [favoritos, setFavoritos] = useState([]);
 
-  // Agregar o quitar destinos de favoritos
   const toggleFavorito = (id) => {
     if (favoritos.includes(id)) {
       setFavoritos(favoritos.filter((favorito) => favorito !== id));
